@@ -55,11 +55,6 @@ body {
   }
 }
 
-@keyframes slide {
-  to {
-    transform: scaleX(0);
-  }
-}
 
 .container {
   display: flex;
@@ -227,11 +222,17 @@ a {
     background-color: var(--bg);
     display: block;
     z-index: 1;
-    animation: slide 250ms ease-out forwards 200ms;
+    animation: slide 300ms ease-in forwards 200ms;
   }
   img {
-    transform: translateX(-8px);
-    animation: littleSlide 500ms linear forwards 250ms;
+    transform: translateX(-20px);
+    animation: littleSlide 500ms linear forwards 350ms;
+  }
+}
+
+@keyframes slide {
+  to {
+    transform: scaleX(0) translateX(100px);
   }
 }
 
