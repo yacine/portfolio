@@ -14,7 +14,6 @@
 
   .hero img {
     opacity: 0;
-    transform: translateY(3px);
   }
 }
 
@@ -46,13 +45,19 @@ body {
 }
 
 
-@-webkit-keyframes hue {
+@keyframes hue {
   from {
     -webkit-filter: hue-rotate(0deg);
   }
 
   to {
     -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
+@keyframes slide {
+  to {
+    transform: scaleX(0);
   }
 }
 
@@ -68,6 +73,7 @@ body {
 }
 
 .hero {
+  position: relative;
   width: 100%;
   margin-top: -80px;
 
@@ -209,3 +215,30 @@ a {
     }
   }
 }
+
+
+.hero {  
+  &::before {
+    transform-origin: 100% 50%;
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg);
+    display: block;
+    z-index: 1;
+    animation: slide 250ms ease-out forwards 200ms;
+  }
+  img {
+    transform: translateX(-8px);
+    animation: littleSlide 500ms linear forwards 250ms;
+  }
+}
+
+@keyframes littleSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
