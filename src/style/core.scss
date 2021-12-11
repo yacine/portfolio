@@ -128,6 +128,8 @@ a {
 }
 
 .cta {
+  -webkit-transform: translateZ(0);
+  transform: translate3d(0);
   $height: 54px;
   background: hsl(200, 7%, 14%);
   border: 2px solid transparent;
@@ -225,20 +227,19 @@ a {
     animation: slide 300ms ease-in forwards 200ms;
   }
   img {
-    transform: translateX(-20px);
-    animation: littleSlide 500ms linear forwards 350ms;
+    transform: translateX(-3px);
+    animation: littleSlide 600ms ease-out forwards 400ms;
   }
 }
 
 @keyframes slide {
   to {
-    transform: scaleX(0) translateX(100px);
+    transform: scaleX(0);
   }
 }
 
 @keyframes littleSlide {
   to {
-    opacity: 1;
     transform: translateX(0);
   }
 }
