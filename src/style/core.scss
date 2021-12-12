@@ -1,6 +1,34 @@
 :root {
   --bg: hsl(200, 7%, 9%);
 }
+
+@font-face {
+  font-family: 'Malnor Sans';
+  src: url('../fonts/MalnorSansRegular.eot');
+  src: local('Malnor Sans Regular'), local('MalnorSansRegular'),
+    url('../fonts/MalnorSansRegular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/MalnorSansRegular.woff2') format('woff2'),
+    url('../fonts/MalnorSansRegular.woff') format('woff'),
+    url('../fonts/MalnorSansRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Malnor Sans';
+  src: url('../fonts/MalnorSansBold.eot');
+  src: local('Malnor Sans Bold'), local('MalnorSansBold'),
+    url('../fonts/MalnorSansBold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/MalnorSansBold.woff2') format('woff2'),
+    url('../fonts/MalnorSansBold.woff') format('woff'),
+    url('../fonts/MalnorSansBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -17,24 +45,12 @@
   }
 }
 
-@font-face {
-  font-family: system-ui;
-  font-style: normal;
-  font-weight: 400;
-  src: local(".SFNS-Regular"), local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
-}
-
-@font-face {
-  font-family: system-ui;
-  font-style: normal;
-  font-weight: 500;
-  src: local(".SFNS-Regular"), local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
-}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: system-ui;
+  font-family: 'Malnor Sans';
+  font-weight: normal;
   font-size: 16px;
   background-color: var(--bg);
   color: #fff;
@@ -43,18 +59,6 @@ body {
   justify-content: center;
   flex-direction: column;
 }
-
-
-@keyframes hue {
-  from {
-    -webkit-filter: hue-rotate(0deg);
-  }
-
-  to {
-    -webkit-filter: hue-rotate(-360deg);
-  }
-}
-
 
 .container {
   display: flex;
@@ -110,7 +114,9 @@ body {
 }
 .headline {
   font-size: max(1.2rem, 2vw);
-  font-weight: 500;
+  font-weight: bold;
+  font-weight: 600;
+  word-spacing: -1.5pt;
   line-height: 1.4;
   color: rgba($color: #FFF, $alpha: .95);
 
@@ -128,13 +134,13 @@ a {
 }
 
 .cta {
+  $height: 54px;
   -webkit-transform: translateZ(0);
   transform: translate3d(0);
-  $height: 54px;
   background: hsl(200, 7%, 14%);
   border: 2px solid transparent;
   color: rgba($color: #FFF, $alpha: .8);
-  font-size: 1rem;
+  font-size: .95rem;
   height: $height;
   width: 230px;
   border-radius: $height/2;
@@ -170,10 +176,10 @@ a {
   &__email::after {
     content: "";
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     background: url("../images/copy.svg") 0 0 no-repeat;
-    background-size: 20px;
+    background-size: 18px;
     opacity: .5;
   }
 
@@ -224,11 +230,21 @@ a {
     background-color: var(--bg);
     display: block;
     z-index: 1;
-    animation: slide 300ms ease-in forwards 200ms;
+    animation: slide 300ms ease-in-out forwards 200ms;
   }
   img {
     transform: translateX(-2px);
     animation: littleSlide 600ms ease-out forwards 400ms;
+  }
+}
+
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
   }
 }
 
