@@ -18,13 +18,13 @@
 
 @font-face {
   font-family: 'Malnor Sans';
-  src: url('../fonts/MalnorSansBold.eot');
-  src: local('Malnor Sans Bold'), local('MalnorSansBold'),
-    url('../fonts/MalnorSansBold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/MalnorSansBold.woff2') format('woff2'),
-    url('../fonts/MalnorSansBold.woff') format('woff'),
-    url('../fonts/MalnorSansBold.ttf') format('truetype');
-  font-weight: bold;
+  src: url('../fonts/MalnorSansMedium.eot');
+  src: local('Malnor Sans Medium'), local('MalnorSansMedium'),
+    url('../fonts/MalnorSansMedium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/MalnorSansMedium.woff2') format('woff2'),
+    url('../fonts/MalnorSansMedium.woff') format('woff'),
+    url('../fonts/MalnorSansMedium.ttf') format('truetype');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
@@ -37,10 +37,6 @@
 
 .loading {
   .container {
-    opacity: 0;
-  }
-
-  .hero img {
     opacity: 0;
   }
 }
@@ -63,7 +59,6 @@ body {
 .container {
   display: flex;
   align-items: center;
-  transition: all .5s;
   flex-direction: column;
   @media (min-width: 48rem) {
     height: 100vh;
@@ -86,10 +81,15 @@ body {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    transition: all .5s;
   }
 }
 
+@keyframes appear {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .content {
   display: flex;
   align-items: center;
@@ -101,8 +101,12 @@ body {
   margin-top: -32px;
   position: relative;
   z-index: 1;
-
+  
+  
   @media (min-width: 48rem) {
+    opacity: 0;
+    transform: translateX(-4px);
+    animation: appear 250ms forwards 350ms ease-in;
     width: 50%;
     margin-top: 0;
   }
@@ -115,8 +119,9 @@ body {
 .headline {
   font-size: max(1.2rem, 2vw);
   font-weight: bold;
-  font-weight: 600;
-  word-spacing: -1.5pt;
+  font-weight: 500;
+  word-spacing: -1pt;
+  letter-spacing: -.333pt;
   line-height: 1.4;
   color: rgba($color: #FFF, $alpha: .95);
 
@@ -134,16 +139,15 @@ a {
 }
 
 .cta {
-  $height: 54px;
   -webkit-transform: translateZ(0);
   transform: translate3d(0);
   background: hsl(200, 7%, 14%);
   border: 2px solid transparent;
   color: rgba($color: #FFF, $alpha: .8);
-  font-size: .95rem;
-  height: $height;
-  width: 230px;
-  border-radius: $height/2;
+  font-size: 1rem;
+  height: 64px;
+  width: 260px;
+  border-radius: 32px;
   margin-top: 2rem;
   display: flex;
   font-weight: 400;
@@ -151,54 +155,31 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 1.33rem rem;
+  line-height: 1;
+  position: relative;
 
   &:hover {
     background: hsl(200, 7%, 17%);
   }
 
-  &__email {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      
-      &::after {
-        content: "";
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        background: url("../images/copy.svg") 0 0 no-repeat;
-        background-size: 20px;
-        margin-left: .5rem;
-        opacity: .5;
-      }
-  }
-
-  &__email::after {
+  &::after {
     content: "";
     display: inline-block;
     width: 18px;
     height: 18px;
     background: url("../images/copy.svg") 0 0 no-repeat;
     background-size: 18px;
-    opacity: .5;
-  }
-
-  .cta__feedback {
-    display: none;
-    em {
-      font-size: 1.2rem;
-    }
+    opacity: 0.33;
+    position: absolute;
+    right: 16px;
   }
   
   &.copied {
     pointer-events:none;
     background: hsl(200, 7%, 15%);
-
-    .cta__feedback {
-      display: block;
-    }
-    .cta__email {
-      display: none;
+    &::after {
+      visibility: hidden;
     }
   }
 }
@@ -233,8 +214,10 @@ a {
     animation: slide 300ms ease-in-out forwards 200ms;
   }
   img {
-    transform: translateX(-2px);
-    animation: littleSlide 600ms ease-out forwards 400ms;
+    @media (min-width: 48rem) {
+      transform: translateX(-3px);
+    }
+    animation: littleSlide 500ms ease-in forwards 200ms;
   }
 }
 
