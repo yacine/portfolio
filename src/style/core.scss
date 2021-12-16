@@ -41,7 +41,6 @@
   }
 }
 
-
 body {
   margin: 0;
   padding: 0;
@@ -102,11 +101,9 @@ body {
   position: relative;
   z-index: 1;
   
-  
   @media (min-width: 48rem) {
     opacity: 0;
     transform: translateX(-4px);
-    animation: appear 250ms forwards 350ms ease-in;
     width: 50%;
     margin-top: 0;
   }
@@ -114,7 +111,6 @@ body {
   @media (min-width: 80rem) {
     padding: 3rem;
   }
-
 }
 .headline {
   font-size: max(1.2rem, 2vw);
@@ -211,13 +207,11 @@ a {
     background-color: var(--bg);
     display: block;
     z-index: 1;
-    animation: slide 300ms ease-in-out forwards 200ms;
   }
   img {
     @media (min-width: 48rem) {
       transform: translateX(-3px);
     }
-    animation: littleSlide 500ms ease-in forwards 200ms;
   }
 }
 
@@ -243,3 +237,24 @@ a {
   }
 }
 
+.loaded {
+  .content {
+    @media (min-width: 48rem) {
+      animation: appear 250ms forwards 350ms ease-in;
+    }
+  }
+
+  .hero {
+    &::before {
+      animation: slide 300ms ease-in-out forwards 200ms;
+    }
+
+    img {
+      @media (min-width: 48rem) {
+        transform: translateX(-3px);
+      }
+
+      animation: littleSlide 500ms ease-in forwards 200ms;
+    }
+  }
+}
